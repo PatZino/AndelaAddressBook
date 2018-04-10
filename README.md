@@ -4,9 +4,9 @@
 
 #### An Address Book that allows user add contact and view it.
 
-## Description
+## Input Field
 
-Input fields include ```first name```, ```last name```, ```email```, ```Phone number```, ```Picture```, ```street```, ```city``` and ```state```.
+```first name```, ```last name```, ```email```, ```Phone number```, ```Picture```, ```street```, ```city``` and ```state```.
 
 
 ## Technologies Used
