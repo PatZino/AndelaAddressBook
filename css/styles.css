@@ -9,22 +9,35 @@
 
 .contact {
     cursor: pointer;
-    color: #0088cc;
-}
-
-.contact:hover {
-    text-decoration: none;
     color: whitesmoke;
 }
 
+#contacts{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.contact:hover {
+    text-decoration: none;
+}
+
+
 .displayContact{
     background-color: #2e6da4;
-    width: 30%;
+    width: 40%;
     height: auto;
     color: whitesmoke;
     border: double whitesmoke 5px;
 }
 
+
 .awesomeFont{
     font-size: 36px;
 }
+
+.awesomeFont-edit{
+    font-size: 20px;
+}
+
+
+
+

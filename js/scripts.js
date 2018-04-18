@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var contactList = [];
+
     $("#add-address").click(function() {
       $("#new-addresses").append('<div class="new-address address">' +
                                    '<div class="form-group">' +
@@ -19,12 +21,13 @@ $(document).ready(function() {
     $("form#new-contact").submit(function(event) {
         event.preventDefault();
 
-        // var inputtedPicture = $("input#fileupload").val();
-        var inputtedPicture = document.getElementById('fileUpload').files[0];
-        var inputtedFirstName = $("input#new-first-name").val();
-        var inputtedLastName = $("input#new-last-name").val();
-        var inputtedPhone = $("input#new-number").val();
-        var inputtedEmail = $("input#new-email").val();
+
+            // var inputtedPicture = $("input#fileupload").val();
+            var inputtedPicture = document.getElementById('fileUpload').files[0];
+            var inputtedFirstName = $("input#new-first-name").val();
+            var inputtedLastName = $("input#new-last-name").val();
+            var inputtedPhone = $("input#new-number").val();
+            var inputtedEmail = $("input#new-email").val();
 
 
         var newContact = {
@@ -44,9 +47,41 @@ $(document).ready(function() {
             newContact.addresses.push(newAddress);
         });
 
-        $("ul#contacts").append("<li><span class='contact'>" +
+        contactList.push(newContact);
+        $("ul#contacts").empty();
+        $.each(contactList, function (index, value) {
+            console.log("index; "+index);
+            console.log("value; "+value.firstName);
+            var indexName = "index"+index;
+
+            $("ul#contacts").append("<li id='"+indexName+"'><span class='contact'>" + value.firstName + "</span></li>");
+
+
+            $(".contact").last().click(function() {
+                $("#show-contact").show();
+                console.log(value);
+                $("#show-contact h2").text(value.firstName);
+
+                //$(".picture-use").file(newContact.picture);
+                $(".first-name").text(value.firstName);
+                $(".last-name").text(value.lastName);
+                $(".phone-number").text(value.phoneNumber);
+                $(".email-use").text(value.email);
+                $("#contact-id").val(index);
+
+
+                $("ul#addresses").text("");
+                if(value.addresses.length > 0) {
+                    value.addresses.forEach(function (address) {
+                        $("ul#addresses").append("<li>" + address.street + ", " + address.city + ", " + address.state + "</li>");
+                    });
+                }
+
+            });
+        });
+        /*$("ul#contacts").append("<li><span class='contact'>" +
                                 newContact.firstName + 
-                                "</span></li>");
+                                "</span></li>");*/
 
 
         $("input#fileUpload").val("");
@@ -59,15 +94,28 @@ $(document).ready(function() {
         $("input.new-city").val("");
         $("input.new-state").val("");
 
-
         $(".new-address").remove();
 
-        $(".contact").last().click(function() {
+        $("#delete").click(function (index) {
+            var contactId = $("#contact-id").val();
+            var indexName = "index"+contactId;
+            console.log(contactId);
+            if(contactList.length > 0){
+                contactList.splice(contactId, 1);
+                var contactInList = $("#"+indexName+"");
+                console.log(contactInList);
+                //$("#show-contact").empty();
+                contactInList.empty();
+            }
+        });
+
+
+       /* $(".contact").last().click(function() {
             $("#show-contact").show();
             console.log(newContact);
             $("#show-contact h2").text(newContact.firstName);
 
-           // $(".picture-use").file(newContact.picture);
+            //$(".picture-use").file(newContact.picture);
             $(".first-name").text(newContact.firstName);
             $(".last-name").text(newContact.lastName);
             $(".phone-number").text(newContact.phoneNumber);
@@ -81,19 +129,25 @@ $(document).ready(function() {
 
             var imgCanvas = document.getElementById('can');
             var ctx = imgCanvas.getContext("2d");
-            var fileInput = document.getElementById('fileUpload')
+           // var fileInput = document.getElementById('fileUpload')
             ctx.drawImage(newContact.picture,10,10);
 
-        });
+        });*/
+
+
+
     });
 
-    function upload() {
+
+
+
+    /**  function upload() {
         var imgCanvas = document.getElementById('can');
         var ctx = imgCanvas.getContext("2d");
         var fileInput = document.getElementById('fileUpload')
         ctx.drawImage(fileInput,10,10);
        
-      /**  var fileInput = document.getElementById('fileUpload');
+       var fileInput = document.getElementById('fileUpload');
         var image = new SimpleImage("fileInput");
         image.drawTo(imgCanvas);
 
@@ -104,8 +158,9 @@ $(document).ready(function() {
         ctx.drawImage(img, 10, 10); 
         
         )
-        **/
+
     }
+    **/
     
     
 });

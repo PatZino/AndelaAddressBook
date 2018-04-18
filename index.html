@@ -78,23 +78,36 @@
               </form>
             </div>
 
-          <div class="col-md-3 displayContact">
-              <h2>Contacts <span><i class="fa fa-address-book-o awesomeFont"></i></span></h2>
+          <div class="col-md-4 displayContact">
+              <h2>
+                  Contacts <span><i class="fa fa-address-book-o awesomeFont"></i></span>
+              </h2>
+
               <ul id="contacts">
 
               </ul>
+
+
           </div>
 
-          <div class="col-md-5 displayContact">
+          <div class="col-md-4 displayContact">
               <h2 class="text-center">Contact Details  <span><i class="fa fa-info awesomeFont"></i></span></h2>
+                 <div>
+                     <span class="btn btn-danger pull-right delete-item" id="delete"><i class="fa fa-trash-o awesomeFont"></i></span>
+                     <span class="btn btn-success pull-right edit-item" id="edit"><i class="fa fa-edit awesomeFont-edit"></i></span>
+                 </div>
               <div id="show-contact">
 
+
                 <!--  <canvas id="can" width="240" height="297"><p>Picture: <span class="picture-use"></span></p></canvas> -->
-                  <p>Picture: <span> <canvas id="can" width="240" height="297"></canvas></span></p>
+                <!--  <p>Picture: <span> <canvas id="can" width="240" height="297"></canvas></span></p> -->
+                  <p>Picture: <span class="picture-use"></span></p>
                   <p>First name: <span class="first-name"></span></p>
                   <p>Last name: <span class="last-name"></span></p>
                   <p>Phone Number: <span class="phone-number"></span></p>
                   <p>Email: <span class="email-use"></span></p>
+                  <!--<span class="contact-id"></span>-->
+                  <input id="contact-id" type="hidden" value=""/>
 
                   <p>Addresses:</p>
                   <ul id="addresses">
