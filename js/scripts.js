@@ -50,16 +50,10 @@ $(document).ready(function() {
         contactList.push(newContact);
         $("ul#contacts").empty();
         $.each(contactList, function (index, value) {
-            console.log("index; "+index);
-            console.log("value; "+value.firstName);
             var indexName = "index"+index;
-
             $("ul#contacts").append("<li id='"+indexName+"'><span class='contact'>" + value.firstName + "</span></li>");
-
-
             $(".contact").last().click(function() {
                 $("#show-contact").show();
-                console.log(value);
                 $("#show-contact h2").text(value.firstName);
 
                 //$(".picture-use").file(newContact.picture);
@@ -103,8 +97,7 @@ $(document).ready(function() {
             if(contactList.length > 0){
                 contactList.splice(contactId, 1);
                 var contactInList = $("#"+indexName+"");
-                console.log(contactInList);
-                //$("#show-contact").empty();
+                $("#show-contact").hide();
                 contactInList.empty();
             }
         });
